@@ -4,6 +4,8 @@ from katas.title_case import title_case
 from katas.compare_arrays import comp
 from katas.persistence import persistence
 from katas.button_presses import button_presses
+from katas.find_unique import find_unique
+from katas.find_uniq_string import find_uniq_string
 
 class KataTests(unittest.TestCase):
   def test_string_char_frequency(self):
@@ -53,3 +55,15 @@ class KataTests(unittest.TestCase):
     self.assertEqual(button_presses('WHERE DO U WANT 2 MEET L8R'), 47)
     self.assertEqual(button_presses('#'), 1)
     self.assertEqual(button_presses('1a'), 2)
+  
+  def test_find_unique(self):
+    self.assertEqual(find_unique([1, 2, 2, 2]), 1)
+    self.assertEqual(find_unique([2, 2, 7, 2]), 7)
+  
+  def test_find_uniq_string(self):
+    self.assertEqual(find_uniq_string([ 'Aa', 'aaa', 'aaaaa', 'BbBb', 'Aaaa', 'AaAaAa', 'a' ]), 'BbBb')
+    self.assertEqual(find_uniq_string(['aaa', 'aaa', 'bbb']), 'bbb')
+    self.assertEqual(find_uniq_string([ 'abc', 'acb', 'bac', 'foo', 'bca', 'cab', 'cba' ]), 'foo')
+    self.assertEqual(find_uniq_string([ '    ', 'a', '  ' ]), 'a')
+    self.assertEqual(find_uniq_string(['foo ffooo', 'bat', 'fofoF', 'fO', 'oooooFFFF']), 'bat')
+    self.assertEqual(find_uniq_string(['Tom Marvolo Riddle', 'I am Lord Voldemort', 'Harry Potter']), 'Harry Potter')
