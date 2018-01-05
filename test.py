@@ -10,6 +10,7 @@ from katas.find_uniq_string import find_uniq_string
 from katas.string_incrementer import string_inc
 from katas.range_parser import range_parser
 from katas.kebabize import kebabize
+from katas.html_css_parse import parser
 
 class KataTests(unittest.TestCase):
   def test_string_char_frequency(self):
@@ -100,3 +101,8 @@ class KataTests(unittest.TestCase):
     self.assertEqual(kebabize('camelsHave3Humps'), 'camels-have-humps')
     self.assertEqual(kebabize('SE60nP9EoexdibRtTYQ16rX1JG'), 's-en-p-eoexdib-rt-t-y-qr-x-j-g')
     self.assertEqual(kebabize('2Rs8slUDMYq22Ltutb'), 'rssl-u-d-m-yq-ltutb')
+  
+  def test_html_css_parser(self):
+    self.assertEqual(parser('LimeGreen'), {'r': 50,  'g': 205, 'b': 50 })
+    self.assertEqual(parser('#80FFA0'), {'r': 128, 'g': 255, 'b': 160})
+    self.assertEqual(parser('#3b7'), {'r': 51,  'g': 187, 'b': 119})
