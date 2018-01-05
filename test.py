@@ -11,6 +11,9 @@ from katas.string_incrementer import string_inc
 from katas.range_parser import range_parser
 from katas.kebabize import kebabize
 from katas.html_css_parse import parser
+from katas.only_duplicates import only_duplicates
+
+# TODO: tests for each function should be in their own class
 
 class KataTests(unittest.TestCase):
   def test_string_char_frequency(self):
@@ -106,3 +109,8 @@ class KataTests(unittest.TestCase):
     self.assertEqual(parser('LimeGreen'), {'r': 50,  'g': 205, 'b': 50 })
     self.assertEqual(parser('#80FFA0'), {'r': 128, 'g': 255, 'b': 160})
     self.assertEqual(parser('#3b7'), {'r': 51,  'g': 187, 'b': 119})
+  
+  def test_only_duplicates(self):
+    self.assertEqual(only_duplicates('sass'), 'sss')
+    self.assertEqual(only_duplicates('hello'), 'll')
+    self.assertEqual(only_duplicates('12314256aaeff'), '1212aaff')
