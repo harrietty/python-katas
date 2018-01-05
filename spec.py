@@ -8,6 +8,8 @@ from katas.button_presses import button_presses
 from katas.find_unique import find_unique
 from katas.find_uniq_string import find_uniq_string
 from katas.string_incrementer import string_inc
+from katas.range_parser import range_parser
+from katas.kebabize import kebabize
 
 class KataTests(unittest.TestCase):
   def test_string_char_frequency(self):
@@ -83,3 +85,18 @@ class KataTests(unittest.TestCase):
     self.assertEqual(string_inc('0002862736139'), '0002862736140')
     self.assertEqual(string_inc('Huu,iuCF014672221000000000829'), 'Huu,iuCF014672221000000000830')
     self.assertEqual(string_inc('009'), '010')
+  
+  def test_range_parser(self):
+    self.assertEqual(range_parser('1-5'), [1, 2, 3, 4, 5])
+    self.assertEqual(range_parser('1-10,14'), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 14])
+    self.assertEqual(range_parser('1'), [1])
+    self.assertEqual(range_parser('1-5,9,10-20:2'), [1,2,3,4,5,9,10,12,14,16,18,20])
+    self.assertEqual(range_parser('1-5, 9, 10-20:2'), [1,2,3,4,5,9,10,12,14,16,18,20])
+
+  def test_kebabize(self):
+    self.assertEqual(kebabize('SOS'), 's-o-s')
+    self.assertEqual(kebabize('camelsHaveThreeHumps'), 'camels-have-three-humps')
+    self.assertEqual(kebabize('CamelsHaveHumps'), 'camels-have-humps')
+    self.assertEqual(kebabize('camelsHave3Humps'), 'camels-have-humps')
+    self.assertEqual(kebabize('SE60nP9EoexdibRtTYQ16rX1JG'), 's-en-p-eoexdib-rt-t-y-qr-x-j-g')
+    self.assertEqual(kebabize('2Rs8slUDMYq22Ltutb'), 'rssl-u-d-m-yq-ltutb')

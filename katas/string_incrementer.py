@@ -14,4 +14,4 @@ def string_inc(st):
 
   # return beginning + incrememented number, zfilled to correct length
   
-  return beg + str(int(end.group()) + 1).zfill(len(end.group()))
+  return beg + str(int(end.group()) + 1).zfill(len(end.group())) 
