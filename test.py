@@ -13,6 +13,8 @@ from katas.kebabize import kebabize
 from katas.html_css_parse import parser
 from katas.only_duplicates import only_duplicates
 from katas.traverse_diagonally import diagonally
+from katas.replace_chars import replace_chars
+from katas.sort_nested_lists import sort_nested
 
 class String_char_frequency(unittest.TestCase):
   def test_basic_functionality(self):
@@ -149,3 +151,28 @@ class Traverse_Diagonally(unittest.TestCase):
       [9,9,9,9],
       [4,3,2,4]
     ]), [4,9,2,4,9,3,7,3,9,4,6,2,9,5,1,4])
+    ]), [4,9,2,4,9,3,7,3,9,4,6,2,9,5,1,4])
+
+class Replace_Chars(unittest.TestCase):
+  def test_basic_functionality(self):
+    self.assertEqual(replace_chars(''), '')
+    self.assertEqual(replace_chars('b'), 'e')
+    self.assertEqual(replace_chars('z'), 'a')
+    self.assertEqual(replace_chars('e'), 'd')
+    self.assertEqual(replace_chars('a'), 'z')
+  def test_replaces_chars_in_whole_words(self):
+    self.assertEqual(replace_chars('abcdtuvwxyz'), 'zeeeutaaaaa')
+    self.assertEqual(replace_chars('codewars'), 'enedazuu')
+
+class Sort_Nested_Lists(unittest.TestCase):
+  def test_basic_functionality(self):
+    A=[[[3, 2, 1]]]
+    expected=[[[1, 2, 3]]]
+    self.assertEqual(sort_nested(A),expected)
+    A = [[[2, 1], [4, 3]], [[6, 5], [8, 7]]]
+    expected = [[[1, 2], [3, 4]], [[5, 6], [7, 8]]]
+    self.assertEqual(sort_nested(A), expected)
+    A=[[[29, 32], [82, 61], [75, 91]], [[69, 99], [74, 23], [70, 97]]]
+    expected=[[[23, 29], [32, 61], [69, 70]], [[74, 75], [82, 91], [97, 99]]]
+    self.assertEqual(sort_nested(A), expected)
+
