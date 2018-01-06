@@ -15,6 +15,7 @@ from katas.only_duplicates import only_duplicates
 from katas.traverse_diagonally import diagonally
 from katas.replace_chars import replace_chars
 from katas.sort_nested_lists import sort_nested
+from katas.reverse_parens import reverse_parens
 
 class String_char_frequency(unittest.TestCase):
   def test_basic_functionality(self):
@@ -151,7 +152,6 @@ class Traverse_Diagonally(unittest.TestCase):
       [9,9,9,9],
       [4,3,2,4]
     ]), [4,9,2,4,9,3,7,3,9,4,6,2,9,5,1,4])
-    ]), [4,9,2,4,9,3,7,3,9,4,6,2,9,5,1,4])
 
 class Replace_Chars(unittest.TestCase):
   def test_basic_functionality(self):
@@ -176,3 +176,13 @@ class Sort_Nested_Lists(unittest.TestCase):
     expected=[[[23, 29], [32, 61], [69, 70]], [[74, 75], [82, 91], [97, 99]]]
     self.assertEqual(sort_nested(A), expected)
 
+class Reverse_Parens(unittest.TestCase):
+  def test_basic_functionality(self):
+    self.assertEqual(reverse_parens(''), -1)
+    self.assertEqual(reverse_parens('()))'), 1)
+    self.assertEqual(reverse_parens('(((()((())()'), 2)
+    self.assertEqual(reverse_parens('())()))))()()('), 4)
+    self.assertEqual(reverse_parens('(((())'), 1)
+    self.assertEqual(reverse_parens('())((('), 3)
+    self.assertEqual(reverse_parens(')))))((((('), 6)
+    self.assertEqual(reverse_parens('((('), -1)
