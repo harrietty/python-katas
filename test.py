@@ -16,6 +16,8 @@ from katas.traverse_diagonally import diagonally
 from katas.replace_chars import replace_chars
 from katas.sort_nested_lists import sort_nested
 from katas.reverse_parens import reverse_parens
+from katas.product_of_parts import product_of_parts
+from katas.esolang1 import parse_esolang
 
 class String_char_frequency(unittest.TestCase):
   def test_basic_functionality(self):
@@ -186,3 +188,22 @@ class Reverse_Parens(unittest.TestCase):
     self.assertEqual(reverse_parens('())((('), 3)
     self.assertEqual(reverse_parens(')))))((((('), 6)
     self.assertEqual(reverse_parens('((('), -1)
+
+class Product_Of_Parts(unittest.TestCase):
+  def test_basic_functionality(self):
+    self.assertEqual(product_of_parts(1234), 144)
+    self.assertEqual(product_of_parts(4321), 252)
+
+class Esolang(unittest.TestCase):
+  def test_basic_functionality(self):
+    input = '+'*50 + '.'
+    self.assertEqual(parse_esolang(input), '2')
+    input = '+'*97 + '.'
+    self.assertEqual(parse_esolang(input), 'a')
+    input = '+'*78 + '.'
+    self.assertEqual(parse_esolang(input), 'N')
+  def test_longer_instructions(self):
+    input = '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.+++++++++++++++++++++++++++++.+++++++..+++.+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.+++++++++++++++++++++++++++++++++++++++++++++++++++++++.++++++++++++++++++++++++.+++.++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.'
+    self.assertEqual(parse_esolang(input), 'Hello, World!')
+    input = f'{"+"*50}.hfjs9342+++.'
+    self.assertEqual(parse_esolang(input), '25')
