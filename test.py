@@ -22,6 +22,7 @@ from katas.reverse_parens import reverse_parens
 from katas.product_of_parts import product_of_parts
 from katas.esolang1 import parse_esolang
 from katas.read_files import read_files
+from katas.scramble_letters import scramble
 
 # ---------------- Scraping Katas ------------------------
 from katas.scraping.get_leaderboard import get_leaderboard
@@ -249,3 +250,17 @@ class Read_Files(unittest.TestCase):
       'b.txt': 'Hungry Heart',
       'c.txt': 'Little ghost'
     })
+
+class Scramble_Letters(unittest.TestCase):
+  def test_scrambles_single_word(self):
+    self.assertEqual(scramble('g'), 'g')
+    self.assertEqual(scramble('professionals'), 'paefilnoorsss')
+    self.assertEqual(scramble('marzipan'), 'maaiprzn')
+    self.assertEqual(scramble('world'), 'wlord')
+  def test_multiple_words(self):
+    self.assertEqual(scramble('hello world'), 'hello wlord')
+    self.assertEqual(scramble('bathroom tiles'), 'bahoortm teils')
+  def test_ignore_special_chars(self):
+    self.assertEqual(scramble('wor-ld'), 'wlo-rd')
+    self.assertEqual(scramble('-world'), '-wlord')
+    self.assertEqual(scramble('world-'), 'wlord-')
