@@ -1,4 +1,7 @@
+import os
 import unittest
+
+os.environ['ENV'] = 'TEST'
 
 from katas.string_char_frequency import string_char_frequency
 from katas.title_case import title_case
@@ -18,6 +21,7 @@ from katas.sort_nested_lists import sort_nested
 from katas.reverse_parens import reverse_parens
 from katas.product_of_parts import product_of_parts
 from katas.esolang1 import parse_esolang
+from katas.get_leaderboard import get_leaderboard
 
 class String_char_frequency(unittest.TestCase):
   def test_basic_functionality(self):
@@ -207,3 +211,9 @@ class Esolang(unittest.TestCase):
     self.assertEqual(parse_esolang(input), 'Hello, World!')
     input = f'{"+"*50}.hfjs9342+++.'
     self.assertEqual(parse_esolang(input), '25')
+
+class Get_Leaderboard(unittest.TestCase):
+  def test_basic_functionality(self):
+    self.assertEqual(len(get_leaderboard()), 500)
+    self.assertTrue(get_leaderboard()[0] > 128828)
+    self.assertTrue(get_leaderboard()[1] > 124363)
