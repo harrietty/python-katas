@@ -21,6 +21,7 @@ from katas.sort_nested_lists import sort_nested
 from katas.reverse_parens import reverse_parens
 from katas.product_of_parts import product_of_parts
 from katas.esolang1 import parse_esolang
+from katas.read_files import read_files
 
 # ---------------- Scraping Katas ------------------------
 from katas.scraping.get_leaderboard import get_leaderboard
@@ -240,3 +241,11 @@ class Get_Member_Since(unittest.TestCase):
     self.assertEqual(get_member_since('harrietty'), 'Feb 2016')
     self.assertEqual(get_member_since('chrishill'), 'Nov 2013')
     self.assertEqual(get_member_since('e.milia'), 'Feb 2017')
+
+class Read_Files(unittest.TestCase):
+  def test_basic_functionality(self):
+    self.assertEqual(read_files(os.getcwd() + '/data/read_files_test'), {
+      'a.txt': 'Hello world\n',
+      'b.txt': 'Hungry Heart',
+      'c.txt': 'Little ghost'
+    })
