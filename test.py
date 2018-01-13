@@ -22,6 +22,7 @@ from katas.reverse_parens import reverse_parens
 from katas.product_of_parts import product_of_parts
 from katas.esolang1 import parse_esolang
 from katas.get_leaderboard import get_leaderboard
+from katas.scrape_top_users import scrape_top_users
 
 class String_char_frequency(unittest.TestCase):
   def test_basic_functionality(self):
@@ -217,3 +218,10 @@ class Get_Leaderboard(unittest.TestCase):
     self.assertEqual(len(get_leaderboard()), 500)
     self.assertTrue(get_leaderboard()[0] > 128828)
     self.assertTrue(get_leaderboard()[1] > 124363)
+
+class Scrape_Top_Users(unittest.TestCase):
+  def test_basic_functionality(self):
+    self.assertEqual(len(scrape_top_users().position), 500)
+    self.assertEqual(scrape_top_users().position[1].name, 'g964')
+    self.assertEqual(scrape_top_users().position[1].clan, 'None')
+    self.assertTrue(scrape_top_users().position[1].honor >= 128840)
