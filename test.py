@@ -21,8 +21,12 @@ from katas.sort_nested_lists import sort_nested
 from katas.reverse_parens import reverse_parens
 from katas.product_of_parts import product_of_parts
 from katas.esolang1 import parse_esolang
-from katas.get_leaderboard import get_leaderboard
-from katas.scrape_top_users import scrape_top_users
+
+# ---------------- Scraping Katas ------------------------
+from katas.scraping.get_leaderboard import get_leaderboard
+from katas.scraping.scrape_top_users import scrape_top_users
+from katas.scraping.get_honor import get_honor
+from katas.scraping.get_member_since import get_member_since
 
 class String_char_frequency(unittest.TestCase):
   def test_basic_functionality(self):
@@ -225,3 +229,14 @@ class Scrape_Top_Users(unittest.TestCase):
     self.assertEqual(scrape_top_users().position[1].name, 'g964')
     self.assertEqual(scrape_top_users().position[1].clan, 'None')
     self.assertTrue(scrape_top_users().position[1].honor >= 128840)
+
+class Get_User_Honor(unittest.TestCase):
+  def test_basic_functionality(self):
+    self.assertTrue(get_honor('harrietty') > 1000)
+    self.assertTrue(get_honor('chrishill') > 2000)
+
+class Get_Member_Since(unittest.TestCase):
+  def test_basic_functionality(self):
+    self.assertEqual(get_member_since('harrietty'), 'Feb 2016')
+    self.assertEqual(get_member_since('chrishill'), 'Nov 2013')
+    self.assertEqual(get_member_since('e.milia'), 'Feb 2017')
