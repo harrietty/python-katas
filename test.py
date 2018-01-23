@@ -23,6 +23,8 @@ from katas.product_of_parts import product_of_parts
 from katas.esolang1 import parse_esolang
 from katas.read_files import read_files
 from katas.scramble_letters import scramble
+from katas.cantor_diagonals import cantor
+from katas.backwards_primes import backwards_primes
 
 # ---------------- Scraping Katas ------------------------
 from katas.scraping.get_leaderboard import get_leaderboard
@@ -264,3 +266,15 @@ class Scramble_Letters(unittest.TestCase):
     self.assertEqual(scramble('wor-ld'), 'wlo-rd')
     self.assertEqual(scramble('-world'), '-wlord')
     self.assertEqual(scramble('world-'), 'wlord-')
+
+class Cantor_Diagonals(unittest.TestCase):
+  def test_basic_functionality(self):
+    self.assertEqual(cantor([[0,0],[1,1]]), [1, 0])
+    self.assertEqual(cantor([[0,0,1],[1,1,0],[1,1,1]]), [1, 0, 0])
+    self.assertEqual(cantor([[1,1,1],[1,0,0],[1,0,0]]), [0,1,1])
+
+class Backwards_Primes(unittest.TestCase):
+  def test_basic_functionality(self):
+    self.assertEqual(backwards_primes(2, 15), [13])
+    self.assertEqual(backwards_primes(2, 100), [13, 17, 31, 37, 71, 73, 79, 97])
+    self.assertEqual(backwards_primes(1095000, 1095403), [1095047, 1095209, 1095319, 1095403])
