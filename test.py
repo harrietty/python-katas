@@ -27,6 +27,7 @@ from katas.scramble_letters import scramble
 from katas.cantor_diagonals import cantor
 from katas.backwards_primes import backwards_primes
 from katas.valid_mongo_id import Mongo
+from katas.array_combinations import array_combs
 
 # ---------------- Scraping Katas ------------------------
 from katas.scraping.get_leaderboard import get_leaderboard
@@ -290,3 +291,9 @@ class Valid_Mongo_ID(unittest.TestCase):
     self.assertEqual(Mongo.get_timestamp(111111111111111111111111), False)
     self.assertEqual(Mongo.get_timestamp('507f1f77bcf86cz799439011'), False)
     self.assertEqual(Mongo.get_timestamp('507f1f77bcf86cd799439016'), datetime(2012, 10, 17, 22, 13, 27))
+
+class Array_combinations(unittest.TestCase):
+  def test_basic_functionality(self):
+    self.assertEqual(array_combs([[1,2], [3], [4,5,5]]), 4)
+    self.assertEqual(array_combs([[1,2], [3], [4,5]]), 4)
+    self.assertEqual(array_combs([[1,2], [3,4], [4,4,4,5]]), 8)
